@@ -54,16 +54,16 @@ final class SessionManager {
         var deviceName = UIDevice.current.name
         deviceName = deviceName.folding(options: .diacriticInsensitive, locale: .current)
         deviceName = String(deviceName.unicodeScalars.filter {CharacterSet.urlQueryAllowed.contains($0) })
-        
+
         var header = "MediaBrowser "
         #if os(tvOS)
         header.append("Client=\"SwiftFin tvOS\", ")
         #else
         header.append("Client=\"SwiftFin iOS\", ")
         #endif
-        
+
         header.append("Device=\"\(deviceName)\", ")
-        
+
         #if os(tvOS)
         header.append("DeviceId=\"tvOS_\(UIDevice.current.identifierForVendor!.uuidString)_\(user?.user_id ?? "")\", ")
         deviceID = "tvOS_\(UIDevice.current.identifierForVendor!.uuidString)_\(user?.user_id ?? "")"

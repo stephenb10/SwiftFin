@@ -15,18 +15,18 @@ struct MediaViewActionButton: View {
     var icon: String
     @Binding var scrollView: UIScrollView?
     var iconColor: Color?
-    
+
     var body: some View {
         Image(systemName: icon)
             .foregroundColor(focused ? .black : iconColor ?? .white)
             .onChange(of: envFocused) { envFocus in
-                if(envFocus == true) {
+                if envFocus == true {
                     scrollView?.scrollToTop()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                         scrollView?.scrollToTop()
                     }
                 }
-                
+
                 withAnimation(.linear(duration: 0.15)) {
                     self.focused = envFocus
                 }

@@ -17,7 +17,7 @@ final class SeasonItemViewModel: DetailItemViewModel {
     override init(item: BaseItemDto) {
         super.init(item: item)
         self.item = item
-        
+
         requestEpisodes()
     }
 

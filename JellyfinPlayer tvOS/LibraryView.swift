@@ -29,11 +29,11 @@ struct LibraryView: View {
                     Spacer().frame(height: 16)
                     LazyVGrid(columns: tracks) {
                         ForEach(viewModel.items, id: \.id) { item in
-                            if(item.type != "Folder") {
+                            if item.type != "Folder" {
                                 NavigationLink(destination: LazyView { ItemView(item: item) }) {
                                     PortraitItemElement(item: item)
                                 }.buttonStyle(PlainNavigationLinkButtonStyle())
-                                    .onAppear() {
+                                    .onAppear {
                                         if item == viewModel.items.last && viewModel.hasNextPage {
                                             print("Last item visible, load more items.")
                                             viewModel.requestNextPageAsync()
